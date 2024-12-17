@@ -8,8 +8,8 @@ enum ZigZagState {
 
 impl Solution {
     pub fn convert(s: String, num_rows: i32) -> String {
-        assert!(num_rows >= 1 && num_rows <= 1000);
-        assert!(s.len() >= 1 && s.len() <= 1000);
+        assert!((1..=1000).contains(&num_rows));
+        assert!(!s.is_empty() && s.len() <= 1000);
         for ch in s.chars() {
             assert!(ch.is_alphabetic() || ch == '.' || ch == ',');
         }

@@ -2,7 +2,7 @@ pub struct Solution;
 
 impl Solution {
     pub fn int_to_roman(num_orig: i32) -> String {
-        assert!(num_orig >= 1 && num_orig < 4000);
+        assert!((1..4000).contains(&num_orig));
 
         const ROMAN_MAPPING: [(&str, i32); 13] = [
             ("M", 1000),
@@ -91,4 +91,3 @@ mod constraints {
         let _output = Solution::int_to_roman(input);
     }
 }
-

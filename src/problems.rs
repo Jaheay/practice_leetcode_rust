@@ -13,12 +13,12 @@ mod problem9;
 mod problem11;
 mod problem12;
 mod problem13;
-mod problem14; 
+mod problem14;
 mod problem15;
 mod problem16;
 mod problem17;
 mod problem18;
-mod problem20; 
+mod problem20;
 
 mod problem234;
 

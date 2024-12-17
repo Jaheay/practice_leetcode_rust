@@ -3,7 +3,7 @@ pub struct Solution;
 impl Solution {
     pub fn longest_palindrome(mut s: String) -> String {
         assert!(s.chars().all(|ch| ch.is_alphanumeric()));
-        assert!(s.len() > 0 && s.len() <= 1000);
+        assert!(!s.is_empty() && s.len() <= 1000);
 
         let s_len = s.len();
 
@@ -60,7 +60,7 @@ impl Solution {
                 && s_dummy[chk_idx - radius] == s_dummy[chk_idx + radius]
             {
                 // +2 since were storing length, not radius
-                palindrome_len[chk_idx] = palindrome_len[chk_idx] + 2;
+                palindrome_len[chk_idx] += 2;
                 radius += 1;
             }
         }
@@ -74,7 +74,7 @@ impl Solution {
         let radius_of_max = (palindrome_len[centre_of_max].saturating_sub(1)) / 2;
         let mut result = &s_dummy
             [(centre_of_max - radius_of_max)..(centre_of_max + radius_of_max + 1)]
-            .into_iter()
+            .iter()
             .collect::<String>();
         println!(
             "s_dummy: {:?}, com: {}, lcom: {}, rom: {}, result: {}",
@@ -97,7 +97,7 @@ mod examples {
         let input = "babad".to_string();
         let output = Solution::longest_palindrome(input);
         println!("{}", output);
-        assert!(output == "aba".to_string() || output == "bab".to_string());
+        assert!(output == *"aba" || output == *"bab");
     }
 
     #[test]

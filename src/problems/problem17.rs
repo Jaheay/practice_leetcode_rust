@@ -3,10 +3,7 @@ use std::collections::HashMap;
 pub struct Solution;
 
 impl Solution {
-
-
     pub fn letter_combinations(digits: String) -> Vec<String> {
-        
         // If input empty, output empty
         if digits.is_empty() {
             return vec![];
@@ -40,20 +37,22 @@ impl Solution {
         // - `collect`: Converts the iterator back into a Vec<String> for the next iteration.
         // If an invalid digit is encountered, panic immediately.
 
-        digits.chars().fold(vec![String::new()], | current_combinations, digit | {
-            if let Some(letters) = phone_number_to_letters.get(&digit) {
-                current_combinations
-                .iter() // Iterate over `current_combinations` first
-                .flat_map(|combination| {
-                    letters.iter().map(move |&letter| format!("{}{}", combination, letter))
-                })
-            .collect()
-            } else {
-                panic!("Invalid")
-            }
-        })
-
-
+        digits
+            .chars()
+            .fold(vec![String::new()], |current_combinations, digit| {
+                if let Some(letters) = phone_number_to_letters.get(&digit) {
+                    current_combinations
+                        .iter() // Iterate over `current_combinations` first
+                        .flat_map(|combination| {
+                            letters
+                                .iter()
+                                .map(move |&letter| format!("{}{}", combination, letter))
+                        })
+                        .collect()
+                } else {
+                    panic!("Invalid")
+                }
+            })
     }
 }
 
@@ -64,19 +63,20 @@ mod examples {
     #[test]
     /// Input: digits = "23"
     /// Output: ["ad","ae","af","bd","be","bf","cd","ce","cf"]
-    fn example1() { 
+    fn example1() {
         let input = "23".to_string();
         let output = Solution::letter_combinations(input);
 
         // Hawt Garbo, but it works
-        let example_output = Vec::from(["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].map(String::from));
+        let example_output =
+            Vec::from(["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].map(String::from));
         assert_eq!(output, example_output)
     }
 
     #[test]
     /// Input: digits = ""
     /// Output: []
-    fn example2() { 
+    fn example2() {
         let input = "".to_string();
         let output = Solution::letter_combinations(input);
 
@@ -86,8 +86,8 @@ mod examples {
     #[test]
     /// Input: digits = "2"
     /// Output: ["a","b","c"]
-    
-    fn example3() { 
+
+    fn example3() {
         let input = "2".to_string();
         let output = Solution::letter_combinations(input);
         let example_output = Vec::from(["a", "b", "c"].map(String::from));
@@ -102,7 +102,7 @@ mod constraints {
     #[test]
     #[should_panic]
     /// 0 <= digits.length <= 4
-    fn digits_len_max() { 
+    fn digits_len_max() {
         let input = "23456".to_string();
         let _output = Solution::letter_combinations(input);
     }
@@ -110,7 +110,7 @@ mod constraints {
     #[test]
     #[should_panic]
     /// digits[i] is a digit in the range ['2', '9']
-    fn digits_val_min() { 
+    fn digits_val_min() {
         let input = "123".to_string();
         let _output = Solution::letter_combinations(input);
     }
@@ -118,7 +118,7 @@ mod constraints {
     #[test]
     #[should_panic]
     /// digits[i] is a digit in the range ['2', '9']
-    fn digits_val_zero() { 
+    fn digits_val_zero() {
         let input = "110".to_string();
         let _output = Solution::letter_combinations(input);
     }
@@ -126,7 +126,7 @@ mod constraints {
     #[test]
     #[should_panic]
     // digits[i] does not contain the pound key
-    fn digits_val_pound() { 
+    fn digits_val_pound() {
         let input = "1#0".to_string();
         let _output = Solution::letter_combinations(input);
     }
@@ -134,7 +134,7 @@ mod constraints {
     #[test]
     #[should_panic]
     // digits[i] does not contain the star key
-    fn digits_val_star() { 
+    fn digits_val_star() {
         let input = "1*0".to_string();
         let _output = Solution::letter_combinations(input);
     }

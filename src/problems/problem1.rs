@@ -9,7 +9,7 @@ impl Solution {
         assert!(nums.len() as i32 <= 1e4 as i32 && nums.len() >= 2);
         // Ensure each value of nums is less than 10e9
         for num in nums.iter() {
-            assert!(num <= &1_000_000_000 && num >= &-1_000_000_000)
+            assert!(((-1e9 as i32)..=(1e9 as i32)).contains(num));
         }
 
         /*

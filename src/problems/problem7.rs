@@ -7,7 +7,7 @@ impl Solution {
         let x_rev_int: i32 = x_rev_string.parse::<i32>().unwrap_or(0);
         match positive {
             true => x_rev_int,
-            false => x_rev_int * -1,
+            false => -x_rev_int,
         }
     }
 }

@@ -6,7 +6,7 @@ impl Solution {
         let mut substr = String::new();
         assert!(s.len() <= 50000);
 
-        while s.len() > 0 {
+        while !s.is_empty() {
             let curr_ch = s.pop().expect("String is empty with len > 0");
             if let Some(curr_ch_pos) = substr.find(curr_ch) {
                 if result < substr.len() {

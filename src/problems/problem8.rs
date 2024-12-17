@@ -33,7 +33,7 @@ impl Solution {
         }
 
         if is_neg {
-            result.insert_str(0, "-");
+            result.insert(0, '-');
         }
 
         match result.parse::<i32>() {

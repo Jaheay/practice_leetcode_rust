@@ -1,11 +1,10 @@
 #[allow(dead_code)]
-
 pub struct Solution;
 
 impl Solution {
     pub fn find_median_sorted_arrays(nums1: Vec<i32>, nums2: Vec<i32>) -> f64 {
         assert!(nums1.len() <= 1000 && nums2.len() <= 1000);
-        assert!(nums1.len() > 0 || nums2.len() > 0);
+        assert!(!nums1.is_empty() || !nums2.is_empty());
 
         let mut nums_both = nums1.clone();
         nums_both.extend(&nums2);

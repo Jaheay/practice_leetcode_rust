@@ -16,7 +16,7 @@ impl Solution {
             }
         }
 
-        return true;
+        true
     }
 }
 
@@ -32,7 +32,7 @@ mod examples {
     fn example1() {
         let input = 121;
         let output = Solution::is_palindrome(input);
-        assert_eq!(output, true);
+        assert!(output);
     }
 
     #[test]
@@ -43,7 +43,7 @@ mod examples {
     fn example2() {
         let input = -121;
         let output = Solution::is_palindrome(input);
-        assert_eq!(output, false);
+        assert!(!output);
     }
 
     #[test]
@@ -54,7 +54,7 @@ mod examples {
     fn example3() {
         let input = 10;
         let output = Solution::is_palindrome(input);
-        assert_eq!(output, false);
+        assert!(!output);
     }
 }
 

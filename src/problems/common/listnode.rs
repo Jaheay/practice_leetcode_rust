@@ -13,10 +13,10 @@ impl ListNode {
 
     // Convert from Vec<i32> to ListNode
     // Only used for tests since LeetCode defines ListNode
-     pub fn from_vec(vec: Vec<i32>) -> Option<Box<ListNode>> {
+    pub fn from_vec(vec: Vec<i32>) -> Option<Box<ListNode>> {
         let mut iter = vec.into_iter().rev();
         let mut head = None;
-        while let Some(val) = iter.next() {
+        for val in iter {
             let node = Box::new(ListNode { val, next: head });
             head = Some(node);
         }
@@ -53,7 +53,7 @@ impl ListNode {
     }
 }
 
-// Prevents stack overflow on Problem 234 
+// Prevents stack overflow on Problem 234
 // The default Drop implementation for ListNode is going to be recursive.
 // This causes a stack overflow when dropping a list with many items
 // Only used for tests since LeetCode defines ListNode

@@ -3,7 +3,7 @@ pub struct Solution;
 impl Solution {
     pub fn is_valid(s: String) -> bool {
         let mut stack = Vec::new();
-        
+
         if s.len() > 1e4 as usize {
             panic!("String too long")
         }
@@ -21,7 +21,7 @@ impl Solution {
                 _ => panic!("Invalid characters in input"), // Given input consists of only valid parentheses
             }
         }
-        
+
         stack.is_empty()
     }
 }
@@ -37,7 +37,7 @@ mod examples {
     fn example1() {
         let input = "()".to_string();
         let output = Solution::is_valid(input);
-        assert_eq!(output, true);
+        assert!(output);
     }
 
     #[test]
@@ -47,7 +47,7 @@ mod examples {
     fn example2() {
         let input = "()[]{}".to_string();
         let output = Solution::is_valid(input);
-        assert_eq!(output, true);
+        assert!(output);
     }
 
     #[test]
@@ -57,7 +57,7 @@ mod examples {
     fn example3() {
         let input = "(]".to_string();
         let output = Solution::is_valid(input);
-        assert_eq!(output, false);
+        assert!(!output);
     }
 
     #[test]
@@ -67,7 +67,7 @@ mod examples {
     fn example4() {
         let input = "([])".to_string();
         let output = Solution::is_valid(input);
-        assert_eq!(output, true);
+        assert!(output);
     }
 }
 
@@ -87,7 +87,7 @@ mod constraints {
     #[should_panic]
     /// s consists of parentheses only '()[]{}'.
     fn string_invalid() {
-        let input = "()<>[]".to_string(); 
+        let input = "()<>[]".to_string();
         let _output = Solution::is_valid(input);
     }
 }

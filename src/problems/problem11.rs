@@ -45,7 +45,7 @@ impl Solution {
             }
         }
 
-        return max_area;
+        max_area
     }
 }
 

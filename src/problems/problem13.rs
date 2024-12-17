@@ -17,7 +17,7 @@ impl Solution {
     pub fn roman_to_int(s: String) -> i32 {
         // Check length
         assert!(
-            s.len() >= 1 && s.len() <= 15,
+            !s.is_empty() && s.len() <= 15,
             "Length of string is not within [1, 15]"
         );
 

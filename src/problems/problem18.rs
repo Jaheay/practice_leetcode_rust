@@ -11,11 +11,14 @@ impl Solution {
             panic!("Target should be within the range of -10^9 <= target <= 10^9");
         }
 
-        if numbers.len() < 1 || numbers.len() > 200 {
+        if numbers.is_empty() || numbers.len() > 200 {
             panic!("Array length should be within the range of 1 to 200");
         }
 
-        if !numbers.iter().all(|&value| value >= -1e9 as i32 && value <= 1e9 as i32) {
+        if !numbers
+            .iter()
+            .all(|&value| value >= -1e9 as i32 && value <= 1e9 as i32)
+        {
             panic!("All values must be in the range of -1e9 <= value <= 1e9");
         }
 
@@ -24,23 +27,20 @@ impl Solution {
             return vec![];
         }
 
-        
         numbers.sort();
         let max_value = *numbers.last().unwrap(); // Largest number in the sorted array
 
-        
         for (first_index, &first_value) in numbers.iter().enumerate() {
-
             // Skip duplicate first values to ensure unique quadruplets
             if first_index > 0 && first_value == numbers[first_index - 1] {
                 continue;
             }
-            
+
             // If the smallest possible sum using this first value exceeds the target, break early
             if target / 4 < first_value {
                 break;
             }
-            
+
             // Start the second loop from the next element after `first_index`
             for (second_index, &second_value) in numbers[first_index + 1..].iter().enumerate() {
                 // Skip duplicate second values for unique quadruplets
@@ -54,17 +54,24 @@ impl Solution {
                 }
 
                 // Start the third loop from the next element after `first_index + 1 + second_index`
-                for (third_index, &third_value) in numbers[first_index + 1 + second_index + 1..].iter().enumerate() {
-                    
+                for (third_index, &third_value) in numbers[first_index + 1 + second_index + 1..]
+                    .iter()
+                    .enumerate()
+                {
                     // Skip duplicate third values for unique quadruplets
-                    if third_index > 0 && third_value == numbers[first_index + 1 + second_index + 1 + third_index - 1] {
+                    if third_index > 0
+                        && third_value
+                            == numbers[first_index + 1 + second_index + 1 + third_index - 1]
+                    {
                         continue;
                     }
 
                     // If the smallest possible sum using these three values exceeds the target, break early
                     if target
                         .saturating_sub(first_value)
-                        .saturating_sub(second_value) / 2 < third_value
+                        .saturating_sub(second_value)
+                        / 2
+                        < third_value
                     {
                         break;
                     }
@@ -85,13 +92,18 @@ impl Solution {
                         .binary_search(&fourth_value)
                         .is_ok()
                     {
-                        valid_quadruplets.insert(vec![first_value, second_value, third_value, fourth_value]);
+                        valid_quadruplets.insert(vec![
+                            first_value,
+                            second_value,
+                            third_value,
+                            fourth_value,
+                        ]);
                     }
                 }
             }
         }
 
-        return valid_quadruplets.into_iter().collect();
+        valid_quadruplets.into_iter().collect()
     }
 }
 
@@ -106,14 +118,14 @@ mod examples {
                 return false;
             }
         }
-        return true;
+        true
     }
 
     #[test]
     /// Input: nums = [1,0,-1,0,-2,2], target = 0
     /// Output: [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]
-    fn example1() { 
-        let input_nums = vec![1,0,-1,0,-2,2];
+    fn example1() {
+        let input_nums = vec![1, 0, -1, 0, -2, 2];
         let input_target = 0;
         let output = Solution::four_sum(input_nums, input_target);
         assert_eq!(output.len(), 3);
@@ -123,14 +135,13 @@ mod examples {
     #[test]
     /// Input: nums = [2,2,2,2,2], target = 8
     /// Output: [[2,2,2,2]]
-    fn example2() { 
-        let input_nums = vec![2,2,2,2,2];
+    fn example2() {
+        let input_nums = vec![2, 2, 2, 2, 2];
         let input_target = 8;
         let output = Solution::four_sum(input_nums, input_target);
         assert_eq!(output.len(), 1);
         assert!(all_quads_eq_target(output, input_target))
     }
-
 }
 
 #[cfg(test)]
@@ -157,7 +168,7 @@ mod constraints {
 
     #[test]
     #[should_panic]
-    /// -1e9 <= nums[i] 
+    /// -1e9 <= nums[i]
     fn nums_val_min() {
         let input_nums = vec![1, 2, 3, -1e9 as i32 - 1, 4, 5, 6];
         let input_target = 0;
@@ -190,5 +201,4 @@ mod constraints {
         let input_target = 1e9 as i32 + 1;
         let _output = Solution::four_sum(input_nums, input_target);
     }
-
 }
