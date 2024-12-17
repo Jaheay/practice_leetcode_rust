@@ -8,10 +8,10 @@ impl Solution {
 
         // Verify constraints
         if nums.len() < 3 || nums.len() > 3000 {
-            panic!("Array length should be greater than 3, and less than 3000");
+            panic!("Array length should be between 3 and 3000 inclusive");
         }
 
-        if !nums.iter().all(|&val| val >= -1e9 as i32 && val <= 1e5 as i32) {
+        if !nums.iter().all(|&val| val >= -1e5 as i32 && val <= 1e5 as i32) {
             panic!("All values must be in the range -1e5 <= value <= 1e5");
         }
 
@@ -122,7 +122,7 @@ mod constraints {
 
     #[test]
     #[should_panic]
-    /// 3 <= nums.length <= 3000
+    /// 3 <= nums.length
     fn nums_length_min() { 
         let input = vec![1,2];
         let _output = Solution::three_sum(input);
@@ -130,7 +130,7 @@ mod constraints {
 
     #[test]
     #[should_panic]
-    /// 3 <= nums.length <= 3000
+    /// nums.length <= 3000
     fn nums_length_max() { 
         let input = vec![3; 3001];
         let _output = Solution::three_sum(input);
@@ -138,7 +138,7 @@ mod constraints {
 
     #[test]
     #[should_panic]
-    /// -1e5 <= nums[i] <= 1e5
+    /// -1e5 <= nums[i]  
     fn nums_value_min() { 
         let input = vec![1, 2, -1e5 as i32 - 1, 3, 4];
         let _output = Solution::three_sum(input);
@@ -146,7 +146,7 @@ mod constraints {
 
     #[test]
     #[should_panic]
-    /// -1e5 <= nums[i] <= 1e5
+    /// nums[i] <= 1e5
     fn nums_value_max() { 
         let input = vec![1, 2, 1e5 as i32 + 1, 3, 4];
         let _output = Solution::three_sum(input);
