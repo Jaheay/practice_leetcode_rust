@@ -19,6 +19,10 @@ mod problem16;
 mod problem17;
 mod problem18;
 mod problem20;
+mod problem21;
+mod problem22;
+mod problem23;
+mod problem24;
 
 mod problem234;
 

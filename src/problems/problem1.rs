@@ -32,9 +32,9 @@ impl Solution {
             let check = target - num;
             if let Some(&index1) = index_map.get(&check) {
                 return vec![index0 as i32, index1 as i32];
-            } else {
-                index_map.insert(num, index0);
             }
+
+            index_map.insert(num, index0);
         }
 
         vec![]

@@ -65,7 +65,7 @@ mod examples {
     /// Input: head = [1,2,2,1]
     /// Output: true
     fn example1() {
-        let input = ListNode::from_vec(vec![1, 2, 2, 1]);
+        let input = ListNode::from_array([1, 2, 2, 1]);
         let output = Solution::is_palindrome(input);
         assert!(output);
     }
@@ -75,7 +75,7 @@ mod examples {
     /// Input: head = [1,2]
     /// Output: false
     fn example2() {
-        let input = ListNode::from_vec(vec![1, 2]);
+        let input = ListNode::from_array([1, 2]);
         let output = Solution::is_palindrome(input);
         assert!(!output);
     }
@@ -89,7 +89,7 @@ mod constraints {
     #[should_panic]
     /// `0 <= Node.val <= 9`
     fn node_val_max() {
-        let input = ListNode::from_vec(vec![1, 2, 3, 11]);
+        let input = ListNode::from_array([1, 2, 3, 11]);
         let _output = Solution::is_palindrome(input);
     }
 
@@ -97,7 +97,7 @@ mod constraints {
     #[should_panic]
     /// `0 <= Node.val <= 9`
     fn node_val_min() {
-        let input = ListNode::from_vec(vec![1, 2, 3, -1, 5]);
+        let input = ListNode::from_array([1, 2, 3, -1, 5]);
         let _output = Solution::is_palindrome(input);
     }
 
@@ -105,7 +105,7 @@ mod constraints {
     #[should_panic]
     /// The number of nodes in the list is in the range `[1, 1e5]`.
     fn node_len_max() {
-        let input = ListNode::from_vec(vec![5; 1e5 as usize + 1]);
+        let input = ListNode::from_array([5; 1e5 as usize + 1]);
         let _output = Solution::is_palindrome(input);
     }
 }
