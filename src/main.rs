@@ -1,5 +1,6 @@
 #![allow(dead_code)]
 #![allow(unused)]
+#![deny(clippy::all)]
 
 use anyhow::{Context, Result};
 use std::process::Command;
