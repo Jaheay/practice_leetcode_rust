@@ -58,8 +58,8 @@ mod examples {
     /// Output: [7,0,8]
     /// Explanation: 342 + 465 = 807.
     fn example1() {
-        let input1 = ListNode::from_vec(vec![2, 4, 3]);
-        let input2 = ListNode::from_vec(vec![5, 6, 4]);
+        let input1 = ListNode::from_array([2, 4, 3]);
+        let input2 = ListNode::from_array([5, 6, 4]);
         let output = ListNode::to_vec(Solution::add_two_numbers(input1, input2));
         assert_eq!(output, vec![7, 0, 8])
     }
@@ -69,8 +69,8 @@ mod examples {
     /// Input: l1 = [0], l2 = [0]
     /// Output: [0]
     fn example2() {
-        let input1 = ListNode::from_vec(vec![0]);
-        let input2 = ListNode::from_vec(vec![0]);
+        let input1 = ListNode::from_array([0]);
+        let input2 = ListNode::from_array([0]);
         let output = ListNode::to_vec(Solution::add_two_numbers(input1, input2));
         assert_eq!(output, vec![0])
     }
@@ -80,8 +80,8 @@ mod examples {
     /// Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
     /// Output: [8,9,9,9,0,0,0,1]
     fn example3() {
-        let input1 = ListNode::from_vec(vec![9, 9, 9, 9, 9, 9, 9]);
-        let input2 = ListNode::from_vec(vec![9, 9, 9, 9]);
+        let input1 = ListNode::from_array([9, 9, 9, 9, 9, 9, 9]);
+        let input2 = ListNode::from_array([9, 9, 9, 9]);
         let output = ListNode::to_vec(Solution::add_two_numbers(input1, input2));
         assert_eq!(output, vec![8, 9, 9, 9, 0, 0, 0, 1])
     }
@@ -95,8 +95,8 @@ mod constraints {
     #[should_panic]
     /// The number of nodes in each linked list is in the range `[1, 100]`.
     fn list_len_max() {
-        let input1 = ListNode::from_vec(vec![3; 101]);
-        let input2 = ListNode::from_vec(vec![2, 3, 4]);
+        let input1 = ListNode::from_array([3; 101]);
+        let input2 = ListNode::from_array([2, 3, 4]);
         let _output = Solution::add_two_numbers(input1, input2);
     }
 
@@ -104,8 +104,8 @@ mod constraints {
     #[should_panic]
     /// `0 <= Node.val <= 9`
     fn node_val_min() {
-        let input1 = ListNode::from_vec(vec![4, -1, 2]);
-        let input2 = ListNode::from_vec(vec![2, 3, 4]);
+        let input1 = ListNode::from_array([4, -1, 2]);
+        let input2 = ListNode::from_array([2, 3, 4]);
         let _output = Solution::add_two_numbers(input1, input2);
     }
 
@@ -113,8 +113,8 @@ mod constraints {
     #[should_panic]
     /// `0 <= Node.val <= 9`
     fn node_val_max() {
-        let input1 = ListNode::from_vec(vec![4, 11, 2]);
-        let input2 = ListNode::from_vec(vec![2, 3, 4]);
+        let input1 = ListNode::from_array([4, 11, 2]);
+        let input2 = ListNode::from_array([2, 3, 4]);
         let _output = Solution::add_two_numbers(input1, input2);
     }
 }

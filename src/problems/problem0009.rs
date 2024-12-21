@@ -57,13 +57,3 @@ mod examples {
         assert!(!output);
     }
 }
-
-/*
-#[cfg(test)]
-mod constraints {
-    use super::*;
-
-    //  -2^31 <= x <= 2^31 - 1
-    // No need to test, constraint enforced by integer bounds
-}
-*/
